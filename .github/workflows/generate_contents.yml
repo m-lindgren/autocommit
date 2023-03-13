@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTOCOMMIT_TOKEN }}
       - name: Install Coq
         run: |
           sudo apt-get update
@@ -43,4 +43,3 @@ jobs:
           git commit -m "Autogenerate CONTENTS.md"
           git push origin main
           echo "Contents generated."
-

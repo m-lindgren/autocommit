@@ -1,6 +1,7 @@
 (rule
  (target CONTENTS.md)
  (deps (source_tree .))
+ (mode (promote (until-clean)))
  (action
   (with-stdout-to CONTENTS.md
    (run %{project_root}/util/generate.sh "%{deps}"))))

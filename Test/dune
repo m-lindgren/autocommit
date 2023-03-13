@@ -1,0 +1,7 @@
+(rule
+ (target CONTENTS.md)
+ (deps (source_tree .))
+ (action
+  (with-stdout-to CONTENTS.md
+   (run %{project_root}/util/generate.sh "%{deps}"))))
+

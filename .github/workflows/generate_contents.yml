@@ -1,0 +1,42 @@
+name: Generate CONTENTS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  update-contents:
+    name: Generate CONTENTS.md
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Coq
+        run: |
+          sudo apt-get update
+          sudo apt-get install dune
+          type dune
+          dune --version
+
+      - name: generate files
+        run: |
+          dune clean
+          dune Test/CONTENTS.md
+
+          git diff Test/CONTENTS.md
+
+      - name: setup git
+        run: |
+          git config user.name "Commit Contents Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          set +e
+          git add Test/CONTENTS.md
+          git commit -m "Autogenerate CONTENTS.md"
+          git push origin main
+          echo "Contents generated."
+

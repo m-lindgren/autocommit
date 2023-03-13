@@ -1,3 +1,3 @@
-(lang dune 3.5)
+(lang dune 2.9)
 (using coq 0.6)
 (name autocommit)

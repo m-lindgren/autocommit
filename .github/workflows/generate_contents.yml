@@ -16,7 +16,7 @@ jobs:
       - name: Install Coq
         run: |
           sudo apt-get update
-          sudo apt-get install dune coqc ocamlc
+          sudo apt-get install dune coq ocaml
           type dune
           dune --version
 

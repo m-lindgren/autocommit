@@ -8,7 +8,7 @@ on:
 jobs:
   update-contents:
     name: Generate CONTENTS.md
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,7 +23,7 @@ jobs:
       - name: generate files
         run: |
           dune clean
-          dune Test/CONTENTS.md
+          dune build Test/CONTENTS.md
 
           git diff Test/CONTENTS.md
 

@@ -23,6 +23,7 @@ jobs:
       - name: generate files
         run: |
           dune clean
+          rm Test/CONTENTS.md
           dune build Test/CONTENTS.md
 
           git diff Test/CONTENTS.md
